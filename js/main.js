@@ -104,24 +104,4 @@
   } else {
     reveals.forEach((el) => el.classList.add("is-visible"));
   }
-
-  // Floating embers
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!reduceMotion) {
-    document.querySelectorAll(".embers").forEach((layer) => {
-      const count = Number(layer.getAttribute("data-embers") || 12);
-      const colors = ["", "orange", "burnt"];
-      for (let i = 0; i < count; i += 1) {
-        const ember = document.createElement("span");
-        ember.className = `ember ${colors[i % colors.length]}`.trim();
-        ember.style.left = `${8 + ((i * 17) % 84)}%`;
-        ember.style.bottom = `${(i * 11) % 40}%`;
-        ember.style.width = `${2 + (i % 4)}px`;
-        ember.style.height = ember.style.width;
-        ember.style.animationDuration = `${3.2 + (i % 5) * 0.55}s`;
-        ember.style.animationDelay = `${(i % 7) * 0.45}s`;
-        layer.appendChild(ember);
-      }
-    });
-  }
 })();
