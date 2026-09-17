@@ -70,10 +70,10 @@
   // Copy contract
   if (copyBtn && contractAddress) {
     copyBtn.addEventListener("click", async () => {
-      const value = contractAddress.textContent?.trim() || "TBA";
+      const value = contractAddress.textContent?.trim() || "";
       const original = copyBtn.textContent;
       try {
-        if (value !== "TBA") {
+        if (value) {
           await navigator.clipboard.writeText(value);
         }
       } catch {
