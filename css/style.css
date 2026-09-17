@@ -330,6 +330,195 @@ button {
   }
 }
 
+/* ========== FIRE EFFECTS ========== */
+.fx-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero > .container,
+.final > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.flame {
+  position: absolute;
+  opacity: 0.35;
+}
+
+.flame-a {
+  left: -2rem;
+  top: 4rem;
+  width: 7rem;
+  height: auto;
+}
+
+.flame-b {
+  right: -1.5rem;
+  bottom: 2rem;
+  width: 6rem;
+  height: auto;
+  transform: rotate(12deg);
+  opacity: 0.28;
+}
+
+.flame-in-a,
+.flame-in-b {
+  position: absolute;
+  z-index: 2;
+  bottom: 8%;
+  width: 4.5rem;
+  height: auto;
+  opacity: 0.7;
+}
+
+.flame-in-a {
+  left: -0.5rem;
+}
+
+.flame-in-b {
+  right: -0.35rem;
+  bottom: 12%;
+  width: 3.75rem;
+  opacity: 0.55;
+  transform: rotate(-8deg);
+}
+
+.flame-final-a {
+  left: 0;
+  top: 30%;
+  width: 9rem;
+  opacity: 0.3;
+}
+
+.flame-final-b {
+  right: 0;
+  top: 18%;
+  width: 7.5rem;
+  opacity: 0.25;
+  transform: rotate(12deg);
+}
+
+.heat-glow {
+  position: absolute;
+  inset: auto 0 0;
+  height: 40%;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(194, 65, 12, 0.28), transparent);
+  pointer-events: none;
+}
+
+.frame-media {
+  position: relative;
+}
+
+.frame-media img {
+  position: relative;
+  z-index: 3;
+}
+
+.embers {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ember {
+  position: absolute;
+  bottom: 10%;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: #fbbf24;
+  opacity: 0;
+  animation: ember-rise linear infinite;
+  box-shadow: 0 0 6px rgba(249, 115, 22, 0.7);
+}
+
+.ember.orange {
+  background: #ea580c;
+}
+
+.ember.burnt {
+  background: #c2410c;
+}
+
+@keyframes flame-flicker {
+  0%,
+  100% {
+    transform: scaleY(1) translateY(0);
+    opacity: 0.95;
+  }
+  40% {
+    transform: scaleY(1.08) translateY(-2%);
+    opacity: 1;
+  }
+  70% {
+    transform: scaleY(0.96) translateY(1%);
+    opacity: 0.85;
+  }
+}
+
+.flame-flicker {
+  animation: flame-flicker 2.4s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.flame-flicker-delayed {
+  animation: flame-flicker 2.8s ease-in-out infinite 0.4s;
+  transform-origin: bottom center;
+}
+
+@keyframes ember-rise {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.6);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-140px) translateX(18px) scale(0.3);
+    opacity: 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .flame-a {
+    left: -3rem;
+    top: 5rem;
+    width: 10rem;
+    opacity: 0.4;
+  }
+  .flame-b {
+    width: 9rem;
+    opacity: 0.35;
+  }
+  .flame-in-a {
+    width: 7rem;
+    left: -1rem;
+    bottom: 10%;
+  }
+  .flame-in-b {
+    width: 5.5rem;
+    right: -0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flame-flicker,
+  .flame-flicker-delayed,
+  .ember {
+    animation: none !important;
+  }
+}
+
 /* ========== HERO ========== */
 .hero {
   position: relative;
@@ -1077,6 +1266,8 @@ button {
   background: var(--charcoal);
   color: var(--cream);
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .final .eyebrow {
